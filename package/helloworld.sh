@@ -15,7 +15,7 @@ mkdir -p RPMs
 
 cp $WORKSPACE/package/first.spec  ~/rpmbuild/SPECS/
 
-rpmbuild -v -bb $BUILD_NUMBER $ENV ~/rpmbuild/SPECS/first.spec
+rpmbuild -v -bb --define 'BUILD_NUMBER '$BUILD_NUMBER --define 'ENV '$ENV ~/rpmbuild/SPECS/first.spec
 
 cp ~/rpmbuild/RPMS/noarch/*.rpm $WORKSPACE/RPMs
 
