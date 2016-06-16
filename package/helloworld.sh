@@ -12,7 +12,7 @@ mkdir -p RPMs
 
 cp $WORKSPACE/package/first.spec  ~/rpmbuild/SPECS/
 
-rpmbuild -bb ~/rpmbuild/SPECS/first.spec
+rpmbuild -bb $BUILD_NUMBER ~/rpmbuild/SPECS/first.spec
 
 cp ~/rpmbuild/RPMS/noarch/*.rpm $WORKSPACE/RPMs
 
