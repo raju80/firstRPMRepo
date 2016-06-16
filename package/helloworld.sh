@@ -1,7 +1,10 @@
+#!/bin/bash
 
 echo "hello.. this is a simple shell script"
 
-#!/bin/bash
+ENV=$(echo $JOB_NAME |awk -F "/" '{print $3}'|awk -F "-" '{print $2}')
+BUILD_NUMBER=${BUILD_NUMBER}
+
 mkdir -p ~/rpmbuild/BUILD/
 mkdir -p ~/rpmbuild/BUILDROOT/
 mkdir -p ~/rpmbuild/RPMS/
@@ -12,7 +15,7 @@ mkdir -p RPMs
 
 cp $WORKSPACE/package/first.spec  ~/rpmbuild/SPECS/
 
-rpmbuild -v -bb $BUILD_NUMBER ~/rpmbuild/SPECS/first.spec
+rpmbuild -v -bb $BUILD_NUMBER $ENV ~/rpmbuild/SPECS/first.spec
 
 cp ~/rpmbuild/RPMS/noarch/*.rpm $WORKSPACE/RPMs
 
