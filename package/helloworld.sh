@@ -4,25 +4,27 @@ echo "hello.. this is a simple shell script"
 
 ENV=$(echo $JOB_NAME |awk -F "/" '{print $3}'|awk -F "-" '{print $2}')
 BUILD_NUMBER=${BUILD_NUMBER}
+RPM_DIR=/home/$USER/rpmbuild
 
-mkdir -p ~/rpmbuild/BUILD/
-mkdir -p ~/rpmbuild/BUILDROOT/
-mkdir -p ~/rpmbuild/RPMS/
-mkdir -p ~/rpmbuild/SRPMS/
-mkdir -p ~/rpmbuild/SOURCES/
-mkdir -p ~/rpmbuild/SPECS/
+
+mkdir -p RPM_DIR/BUILD/
+mkdir -p RPM_DIR/BUILDROOT/
+mkdir -p RPM_DIR/RPMS/
+mkdir -p RPM_DIR/SRPMS/
+mkdir -p RPM_DIR/SOURCES/
+mkdir -p RPM_DIR/SPECS/
 mkdir -p RPMs
 
-cp $WORKSPACE/package/first.spec  ~/rpmbuild/SPECS/
+cp $WORKSPACE/package/first.spec  RPM_DIR/SPECS/
 
-cp $WORKSPACE/package/files/* ~/rpmbuild/SOURCES
+cp $WORKSPACE/package/files/* RPM_DIR/SOURCES
 
 rpmbuild -v -bb --define 'BUILD_NUMBER '$BUILD_NUMBER --define 'ENV '$ENV ~/rpmbuild/SPECS/first.spec
 
-cp ~/rpmbuild/RPMS/noarch/*.rpm $WORKSPACE/RPMs
+cp RPM_DIR/RPMS/noarch/*.rpm $WORKSPACE/RPMs
 
 
-ls -l ~/rpmbuild/RPMS/noarch/
+ls -l RPM_DIR/RPMS/noarch/
 
 
 

@@ -10,6 +10,9 @@ BuildArch       : noarch
 BuildRoot       : %{_tmppath}/%{name}-%{version}-root
 
 
+#macros
+#%define RPM_DIR /home/$
+
 # Use "Requires" for any dependencies, for example:
 # Requires        : tomcat6
 
