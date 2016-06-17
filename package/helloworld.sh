@@ -4,7 +4,7 @@ echo "hello.. this is a simple shell script"
 
 ENV=$(echo $JOB_NAME |awk -F "/" '{print $3}'|awk -F "-" '{print $2}')
 BUILD_NUMBER=${BUILD_NUMBER}
-RPM_DIR=/home/$USER/rpmbuild
+RPM_DIR = `/home/$USER/rpmbuild`
 
 
 mkdir -p RPM_DIR/BUILD/
