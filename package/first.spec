@@ -22,6 +22,8 @@ Hello World app
 # Expansion of source tar balls are done in this section
 %prep
 
+cp -rf ~/rpmbuild/SOURCES/* ~/rpmbuild/BUILD/
+
 # Used to compile and to build the source
 %build
 
